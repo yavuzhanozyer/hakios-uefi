@@ -11,6 +11,11 @@ at a fixed commit, with HakiOS's changes on top, and the platform of each phone 
 | the pictures it shows | `branding/banner.py` makes them |
 | a phone's platform (memory map, drivers list, its device tree) | `devices/<name>/uefi/files/` in the device's repository |
 
+The phones with a platform: `redwood` (POCO X5 Pro 5G, its own port) and `surya` (POCO X3 NFC: Mu-Silicium's `suryaPkg` at
+`BASE` with the "XNU Payload" region at `0xF0000000` added, in `devices/surya/uefi/` of the common repository). Nothing here is
+a phone's: `BootShim.S` copies the container to `0xF0000000` whatever the phone, and the loader knows the phone by its
+framebuffer (`0xE1000000` redwood, `0x9C000000` the SM7150 phones).
+
 ## What HakiOS changes
 
 | Part | Change |
